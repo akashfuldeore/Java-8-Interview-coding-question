@@ -1,6 +1,7 @@
 package RealTimeExample;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class EmployeeList {
 
@@ -27,12 +28,18 @@ public class EmployeeList {
 
 
         // Q.1 How many male and female employees are there in the organization?
+        Map<String, Long> NoOgEmployee = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));
+        System.out.println(NoOgEmployee);
+        System.out.println("===================================");
         // Q.2 Print the name of all departments in the organization?
         employeeList.stream().map(Employee::getDepartment).distinct().forEach(System.out::println);
         System.out.println("===================================");
         employeeList.stream().map(Employee::getGender).distinct().forEach(System.out::println);
         System.out.println("===================================");
         // Q.3 What is the average age of male and female employees?
+        Map<String, Double> avgAgeEmployee = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.averagingDouble(Employee::getAge)));
+        System.out.println(avgAgeEmployee);
+        System.out.println("===================================");
         // Q.4 Get the details of highest paid employee in the organization?
         // Q.5 Get the names of all employees who have joined after 2015?
         // Q.6 Count the number of employees in each department?
@@ -40,6 +47,10 @@ public class EmployeeList {
         // Q.8 Get the details of youngest male employee in the product development
         // department?
         // Q.9 Who has the most working experience in the organization?
+         Optional<Employee> seniorEmployee = employeeList.stream().sorted(Comparator.comparingInt(Employee::getYearOfJoining)).findFirst();
+         Employee seniorMostEmployee = seniorEmployee.get();
+         System.out.println("Name of Employee ="+ seniorMostEmployee.getName());
+         System.out.println("======================");
         // Q.10 How many male and female employees are there in the sales and marketing
         // team?
         // Q.11 What is the average salary of male and female employees?

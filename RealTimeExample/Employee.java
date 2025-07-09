@@ -90,11 +90,6 @@ public class Employee {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(age, department, gender, id, name, salary, yearOfJoining);
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
