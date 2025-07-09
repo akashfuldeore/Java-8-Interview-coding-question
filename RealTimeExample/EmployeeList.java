@@ -41,6 +41,7 @@ public class EmployeeList {
         System.out.println(avgAgeEmployee);
         System.out.println("===================================");
         // Q.4 Get the details of highest paid employee in the organization?
+        System.out.println("===================================");
         // Q.5 Get the names of all employees who have joined after 2015?
         // Q.6 Count the number of employees in each department?
         // Q.7 What is the average salary of each department?
