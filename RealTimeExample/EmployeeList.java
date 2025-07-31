@@ -43,6 +43,8 @@ public class EmployeeList {
         // Q.4 Get the details of highest paid employee in the organization?
         System.out.println("===================================");
         // Q.5 Get the names of all employees who have joined after 2015?
+         employeeList.stream().filter(e-> e.getYearOfJoining() > 2015).map(Employee::getName).forEach(System.out::println);
+        System.out.println("===================================");
         // Q.6 Count the number of employees in each department?
         // Q.7 What is the average salary of each department?
         // Q.8 Get the details of youngest male employee in the product development
