@@ -1,6 +1,7 @@
 package RealTimeExample;
 
 import java.util.*;
+import java.util.Map.*;
 import java.util.stream.Collectors;
 
 public class EmployeeList {
@@ -46,6 +47,15 @@ public class EmployeeList {
          employeeList.stream().filter(e-> e.getYearOfJoining() > 2015).map(Employee::getName).forEach(System.out::println);
         System.out.println("===================================");
         // Q.6 Count the number of employees in each department?
+        Map<String, Long> employeeCountByDepartment =
+                employeeList.stream()
+                        .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
+
+        Set<Entry<String, Long>> entrySet = employeeCountByDepartment.entrySet();
+
+        for (Entry<String, Long> entry : entrySet) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
         // Q.7 What is the average salary of each department?
         // Q.8 Get the details of youngest male employee in the product development
         // department?
@@ -67,5 +77,7 @@ public class EmployeeList {
         Employee emp = employeeList.stream().filter(employe -> "Ali Baig".equals(employe.getName())).findAny()
                 .orElse(null);
         System.out.println(emp);
+        //Q.17 Filter employees older than 30 years and print their names
+
     }
 }
